@@ -1,7 +1,11 @@
 
 const Login = () => {
   return (
-    <div>Login</div>
+    <>
+     <div className="login-container"  style={{paddingTop:'5%'}}>
+        <h2> Login Container  </h2>
+     </div>
+    </>
   )
 }
 
