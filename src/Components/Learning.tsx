@@ -6,7 +6,7 @@ import { Container ,Button  ,Typography ,Stack } from '@mui/material' ;
 const Learning = () => {
 
     const [count,setCount] = useState<number>(0);
-    const params = useSearchParams()[0].get("language") as LangType;
+    const params   = useSearchParams()[0].get("language") as LangType;
     const navigate = useNavigate();
 
      const nextHandler = (): void => {
