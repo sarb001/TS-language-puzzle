@@ -1,7 +1,9 @@
 
 const Result = () => {
   return (
-    <div>Result</div>
+    <div className="result-container" style = {{paddingTop:'5%'}}>  
+        <h3> Result is Here  </h3>
+    </div>
   )
 }
 

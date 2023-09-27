@@ -15,10 +15,14 @@ const Quiz = () => {
      const navigate = useNavigate();
 
      const nextHandler = () : void  => {
-        setResult((prev) => [...prev , ans]);
-        setCount((prev) => prev + 1);
-        setAns("");
-     };
+        if(count === 7){
+          navigate('/result')
+        }else {
+          setResult((prev) => [...prev , ans]);
+          setCount((prev) => prev + 1);
+          setAns("");
+          }
+        };
 
   return (
     <div className = "quiz-container" style = {{paddingTop:'5%'}}>

@@ -32,7 +32,7 @@ const Learning = () => {
               </Button>   
            </Stack>
 
-            <Button  onClick = {count === 7 ? ()=> navigate('/quiz') : nextHandler} 
+            <Button  onClick = {count === 7 ? () => navigate('/quiz') : nextHandler} 
             sx = {{margin:'3rem 0'}} variant='contained'  fullWidth>
                {count === 7 ? "Test" : "Next"}
             </Button>
