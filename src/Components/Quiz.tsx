@@ -1,7 +1,9 @@
 
 const Quiz = () => {
   return (
-    <div>Quiz</div>
+    <div className = "quiz-container" style = {{paddingTop:'5%'}}>
+        Quix 
+    </div>
   )
 }
 
