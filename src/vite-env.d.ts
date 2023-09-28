@@ -1,6 +1,6 @@
 /// <reference types="vite/client" />
 
-type LangType = "ja" | "hi" | "es" | "fr" ;
+type LangType = "hi" | "es" | "fr" | "ja" ;
 
 type WordType = {
     word : string;
@@ -13,4 +13,10 @@ interface StateType {
     result  : string[];
     words   : WordType[];
     error?  : string;
+}
+
+type FetchDataType = {
+    translations : {            // array of objects ( translations )
+        text : string;
+    }[];
 }
