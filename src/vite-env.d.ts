@@ -10,7 +10,7 @@ type WordType = {
 
 interface StateType {
     loading : boolean;
-    result  : string[];
+    results  : string[];
     words   : WordType[];
     error?  : string;
 }

@@ -14,7 +14,7 @@ const Learning = () => {
     const  navigate  = useNavigate();
     const  dispatch = useDispatch();
 
-    const { loading , error , result , words } = useSelector((state : { root : StateType }) => state.root); 
+    const { loading , error , results , words } = useSelector((state : { root : StateType }) => state.root); 
 
      const nextHandler = (): void => {
         setCount((prev) =>  prev + 1);
@@ -50,7 +50,7 @@ const Learning = () => {
 
             <Button  onClick = {count === 7 ? () => navigate('/quiz') : nextHandler} 
             sx = {{margin:'3rem 0'}} variant='contained'  fullWidth>
-               {count === 7 ? "Test" : "Next"}
+               {count === words.length - 1  ? "Test" : "Next"}
             </Button>
           
          </Container>

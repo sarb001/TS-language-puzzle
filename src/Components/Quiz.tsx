@@ -2,9 +2,11 @@ import { Container  ,Typography ,FormControl ,
   FormLabel ,RadioGroup ,Button , FormControlLabel ,
   Radio 
 } from '@mui/material' ;
-import { useState } from 'react';
+import {useSelector , useDispatch } from 'react-redux' ;
+import { useEffect, useState } from 'react';
 
 import {  useNavigate } from 'react-router-dom' ;
+import { saveResult } from '../Redux/Slices';
 
 const Quiz = () => {
 
@@ -13,6 +15,8 @@ const Quiz = () => {
     const [result,setResult] = useState<string[]>([]);
 
      const navigate = useNavigate();
+     const dispatch  = useDispatch(); 
+     const { words } = useSelector((state : { root : StateType }) => state.root); 
 
      const nextHandler = () : void  => {
         if(count === 7){
@@ -24,21 +28,30 @@ const Quiz = () => {
           }
         };
 
+        useEffect(() => {
+          if(count + 1 > words.length) navigate('/result');
+            dispatch(saveResult(result));
+        }, [result]);
+
   return (
     <div className = "quiz-container" style = {{paddingTop:'5%'}}>
          <Container maxWidth = "sm" sx = {{padding : '1rem'}}>
             <Typography m = {'2rem 0'}>  Quiz  </Typography>
             <Typography variant={'h3'}>
-                 {count + 1} - {'Randoms'}
+                  {/* // only show Quiz Answer and then select option  */}
+                 {count + 1} - {words[count]?.word}    
             </Typography>
             <FormControl>
                <FormLabel sx = {{mt : '2rem' , mb : '1rem'}}> Meaning </FormLabel>
                <RadioGroup value = {ans}  onChange={(e) => setAns(e.target.value)}>
-                  <FormControlLabel  
-                  value = {'Lol'}
-                  control = { <Radio /> }
-                  label = {"Option 1"}
-                  />
+                  {words[count]?.options.map((i,idx) => (
+                      <FormControlLabel  
+                          value = {i}
+                          control = { <Radio /> }
+                          label = {i}
+                          key = {idx}
+                      />
+                    ))}
                </RadioGroup>
             </FormControl>
 

@@ -3,7 +3,7 @@ import { createSlice  ,PayloadAction } from '@reduxjs/toolkit' ;
 const initialState : StateType = {
         loading : false,
         words : [],
-        result : [],
+        results : [],
 }
 
 const rootSlice = createSlice({
@@ -25,11 +25,11 @@ const rootSlice = createSlice({
         },
         saveResult : (state , action : PayloadAction<string[]>) => {
             state.loading = false;
-            state.result = action.payload;
+            state.results = action.payload;
         },
         clearState : (state) => {
             state.loading = false;
-            state.result = [];
+            state.results = [];
             state.words = [];
             state.error = undefined;
         },
