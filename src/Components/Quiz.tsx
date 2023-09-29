@@ -14,18 +14,15 @@ const Quiz = () => {
     const [ans,setAns]       = useState<string>("");
     const [result,setResult] = useState<string[]>([]);
 
-     const navigate = useNavigate();
+     const navigate  = useNavigate();
      const dispatch  = useDispatch(); 
      const { words } = useSelector((state : { root : StateType }) => state.root); 
 
      const nextHandler = () : void  => {
-        if(count === 7){
-          navigate('/result')
-        }else {
-          setResult((prev) => [...prev , ans]);
-          setCount((prev) => prev + 1);
-          setAns("");
-          }
+            setResult((prev) => [...prev , ans]);
+            setCount((prev) => prev + 1);
+            setAns("");
+          
         };
 
         useEffect(() => {
@@ -60,7 +57,7 @@ const Quiz = () => {
             fullWidth 
             onClick  = {nextHandler}
             disabled = {ans === ""}>
-                 {count === 7 ? "Submit" : "Next"}
+                 {count === words.length - 1 ? "Submit" : "Next"}
             </Button>
          </Container>
     </div>

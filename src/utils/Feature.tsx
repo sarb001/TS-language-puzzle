@@ -2,8 +2,6 @@ import axios from "axios";
 import _ from "lodash";
 import { generate } from 'random-words' ;
 
-
-
  const generateMCQ = ( 
     meaning : {
         Text : string
@@ -57,7 +55,6 @@ import { generate } from 'random-words' ;
             const arr : WordType[] = recieve.map((i,idx) => {
 
                 const options: string[] = generateMCQ(words,idx);
-
                  return {
                     word    : i.translations[0].text,                  // sehat in hindi
                     meaning : words[idx].Text,                      // Health
@@ -72,6 +69,19 @@ import { generate } from 'random-words' ;
         console.log('Error is -',error);
         throw new Error(" Some Error ");
     }
+}
+
+export const countMatchingElements = (
+    arr1 : string[] ,
+    arr2 : string[]) : number  => {
+
+     if(arr1.length !== arr2.length) throw new Error("Arrays are not Equal ");
+
+     let matchedCount = 0;
+     for (let i = 0; i < arr1.length; i++) {
+         if(arr1[i] === arr2[i]) matchedCount ++;
+     }
+     return matchedCount;
 }
 
 export default translateWords;
